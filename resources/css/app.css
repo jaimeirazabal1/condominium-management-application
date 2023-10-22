@@ -1,0 +1,14 @@
+/* Reset CSS */
+
+/* Eliminar los márgenes y el relleno predeterminados */
+html, body, div, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Establecer un estilo de fuente base para evitar diferencias entre navegadores */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Agregar más reglas de estilo según sea necesario */
