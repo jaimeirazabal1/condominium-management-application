@@ -1,7 +1,7 @@
 // resources/js/components/Register.jsx
 
 import React, { useState } from 'react';
-
+import Swal from 'sweetalert2'
 const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -25,6 +25,14 @@ const Register = () => {
         const data = await response.json();
 
         if (data.success) {
+            Swal.fire(
+                'Se creó correctamente!',
+                `Se ha creado con éxito el usuario ${email} con password ${password}`,
+                'success'
+            )
+            setEmail('');
+            setPassword('');
+            setName('');
             console.log('Registro exitoso');
         } else {
             console.error('Error de registro:', data.error);
@@ -32,51 +40,51 @@ const Register = () => {
     };
 
     return (
-     
+
         <div style={{ backgroundColor: '#A8E6A1', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <div style={{ backgroundColor: 'white', width: '300px', padding: '20px', borderRadius: '5px' }}>
                 <h2 style={{ textAlign: 'center' }}>Registro</h2>
                 <form onSubmit={handleSubmit}>
-                <div style={{ marginBottom: '20px' }}>
+                    <div style={{ marginBottom: '20px' }}>
                         <label>Nombre</label>
                         <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                        style={{ width: '100%', paddingTop: '10px', paddingBottom: '10px', marginTop: '10px', borderRadius: '5px' }}
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                            style={{ width: '100%', paddingTop: '10px', paddingBottom: '10px', marginTop: '10px', borderRadius: '5px' }}
                         />
                     </div>
                     <div style={{ marginBottom: '20px' }}>
                         <label>Email</label>
                         <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        style={{ width: '100%', paddingTop: '10px', paddingBottom: '10px', marginTop: '10px', borderRadius: '5px' }}
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            style={{ width: '100%', paddingTop: '10px', paddingBottom: '10px', marginTop: '10px', borderRadius: '5px' }}
                         />
                     </div>
                     <div style={{ marginBottom: '20px' }}>
                         <label>Password</label>
                         <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                        style={{ width: '100%', paddingTop: '10px', paddingBottom: '10px', marginTop: '10px', borderRadius: '5px' }}
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            style={{ width: '100%', paddingTop: '10px', paddingBottom: '10px', marginTop: '10px', borderRadius: '5px' }}
                         />
                     </div>
                     <button type="submit" style={{ backgroundColor: '#4CAF50', color: 'white', width: '100%', paddingTop: '10px', paddingBottom: '10px', borderRadius: '5px', border: 'none', cursor: 'pointer' }}>
-                    Register
+                        Register
                     </button>
-                    <div style={{marginTop:'10px'}}>
+                    <div style={{ marginTop: '10px' }}>
                         <a href="/login" >Login</a>
                     </div>
                 </form>
             </div>
         </div>
-        
+
     );
 };
 
